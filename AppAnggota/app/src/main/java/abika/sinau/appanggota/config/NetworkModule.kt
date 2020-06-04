@@ -14,7 +14,7 @@ object NetworkModule {
         // jika emulator, ganti IP dengan IP Default -> 10.0.2.2
         // jika device, pastikann IPnya sama dengan yg digunakan laptop
 //        return Retrofit.Builder().build().baseUrl("http://localhost/mentoring-kotlin/")
-        return Retrofit.Builder().baseUrl("http://192.168.100.226/mentoring-kotlin/")
+        return Retrofit.Builder().baseUrl("http://192.168.100.227/mentoring-kotlin/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

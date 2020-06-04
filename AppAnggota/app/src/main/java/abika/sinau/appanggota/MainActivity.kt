@@ -4,6 +4,7 @@ import abika.sinau.appanggota.adapter.AnggotaAdapter
 import abika.sinau.appanggota.config.NetworkModule
 import abika.sinau.appanggota.model.getData.DataItem
 import abika.sinau.appanggota.model.getData.ResponseGetData
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,11 +19,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        fab.setOnClickListener {
+            startActivity(Intent(this@MainActivity, InputActivity::class.java))
+        }
+
+        showData()
+    }
+
+    private fun showData() {
         val listAnggota = NetworkModule.service().getData()
         listAnggota.enqueue(object : Callback<ResponseGetData> {
             override fun onResponse(
-                    call: Call<ResponseGetData>,
-                    response: Response<ResponseGetData>
+                call: Call<ResponseGetData>,
+                response: Response<ResponseGetData>
             ) {
                 if (response.isSuccessful) {
 
@@ -48,6 +58,10 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
 
+    override fun onResume() {
+        super.onResume()
+        showData()
     }
 }
