@@ -1,9 +1,7 @@
 package abika.sinau.appanggota.config
 
-import abika.sinau.appanggota.model.deleteData.ResponseDelete
 import abika.sinau.appanggota.model.getData.ResponseGetData
-import abika.sinau.appanggota.model.insertData.ResponseInsert
-import abika.sinau.appanggota.model.updateData.ResponseUpdate
+import abika.sinau.appanggota.model.actionData.ResponseAction
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -29,7 +27,7 @@ interface ApiService {
     fun insertData(
         @Field("nama") nama: String,
         @Field("nohp") nohp: String,
-        @Field("alamat") alamat: String): Call<ResponseInsert>
+        @Field("alamat") alamat: String): Call<ResponseAction>
 
     // update
     @FormUrlEncoded
@@ -38,10 +36,11 @@ interface ApiService {
         @Field("id") id: String,
         @Field("nama") nama: String,
         @Field("nohp") nohp: String,
-        @Field("alamat") alamat: String): Call<ResponseUpdate>
+        @Field("alamat") alamat: String): Call<ResponseAction>
 
     // delete Data
+    @FormUrlEncoded
     @POST("deleteData.php")
     fun deleteData(
-        @Field("id") id: String): Call<ResponseDelete>
+        @Field("id") id: String): Call<ResponseAction>
 }

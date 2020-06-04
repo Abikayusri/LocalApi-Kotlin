@@ -33,6 +33,10 @@ class AnggotaAdapter (val data: List<DataItem>?, val itemClick : OnClickListener
         holder.view.setOnClickListener {
             itemClick.detail(item)
         }
+
+        holder.btnHapus.setOnClickListener {
+            itemClick.hapus(item)
+        }
     }
 
     class AnggotaViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
@@ -40,9 +44,11 @@ class AnggotaAdapter (val data: List<DataItem>?, val itemClick : OnClickListener
         val nama = view.itemNama
         val nohp = view.itemNoHp
         val alamat = view.itemAlamat
+        val btnHapus = view.btnHapus
     }
 
     interface OnClickListener {
         fun detail(item: DataItem?)
+        fun hapus(item: DataItem?)
     }
 }

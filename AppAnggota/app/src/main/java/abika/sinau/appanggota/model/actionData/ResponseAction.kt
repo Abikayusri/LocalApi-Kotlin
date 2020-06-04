@@ -1,8 +1,8 @@
-package abika.sinau.appanggota.model.updateData
+package abika.sinau.appanggota.model.actionData
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseUpdate(
+data class ResponseAction(
 
 	@field:SerializedName("message")
 	val message: String? = null,
